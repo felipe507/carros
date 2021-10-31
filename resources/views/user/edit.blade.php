@@ -1,7 +1,11 @@
 @extends('layout')
 
+@section('titulo')
+    Editar Usuário
+@endsection
+
 @section('cabecalho')
-    Editar usuario <?php echo auth()->user()->name; ?>
+    Editar usuário <?php echo auth()->user()->name; ?>
 @endsection
 
 @section('conteudo')

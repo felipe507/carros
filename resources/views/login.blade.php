@@ -1,5 +1,9 @@
 @extends('layout')
 
+@section('titulo')
+    Login
+@endsection
+
 @section('conteudo')
     <form method="POST" action="autentica">
         @csrf

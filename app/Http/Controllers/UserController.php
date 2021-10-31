@@ -8,9 +8,10 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         $users = User::all();
-        return view('user/list',['users'=> $users]);
+        $mensagem = $request->session()->get('mensagem');
+        return view('user/list',['users'=> $users, 'mensagem'=> $mensagem]);
     }
 
     public function save(Request $request) {
@@ -21,10 +22,18 @@ class UserController extends Controller
             $id = $request->input('id');
             $user = User::find($id);
             $user->update($dados);
-            return redirect('/');
+            $request->session()->flash(
+                'mensagem',
+                "Usuário {$dados['name']} atualizado(a) com sucesso "
+            );
+            return redirect('/user/list');
         } else {
             User::create($dados);
-            return redirect('/');
+            $request->session()->flash(
+                'mensagem',
+                "Usuario {$dados['name']} criado(a) com sucesso "
+            );
+            return redirect('/user/list');
         }
     }
 
@@ -37,9 +46,13 @@ class UserController extends Controller
         return view('user/edit',['user' => $user]);
     }
 
-    public function delete($id) {
+    public function delete($id, Request $request) {
         $user = User::where('id', $id)->first();
         $user->delete();
-        return redirect('/');
+        $request->session()->flash(
+            'mensagem',
+            "Usuario {$user['name']} excluido(a) com sucesso "
+        );
+        return redirect('/user/list');
     }
 }
