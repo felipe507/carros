@@ -1,27 +1,20 @@
 @extends('layout')
 
 @section('titulo')
-    Lista de carros
+    Lista de veículos
 @endsection
 
 @section('cabecalho')
-    Lista de carros Cadastrados
+    Lista de veículos Cadastrados
 @endsection
 @section('conteudo')
     <div class="row">
         <div class='container-fluid'>
             <div class="row align-items-start">
-                <div class="col"> 
-                    <form action="../../car/capture" method="post">
-                        @csrf
-                        Capturar Dados <input type="text"  name="search"><button type='submit' class='btn-primary'> Capturar </button>
-                    </form>
-                </div>
-                <div class="col"> 
-                    <form action="../../car/search" method="post">
-                        @csrf
-                    Buscar Cadastrado <input type="text"  name="search"><button type='submit' class='btn-primary'> Buscar </button>
-                    </form>
+                <div class="col">
+                    <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../car/create">Adicionar Modelo</a>
+                    <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../car/capture">Capturar Modelos</a>
+
                 </div>
             </div>
         </div>
@@ -29,10 +22,13 @@
 
     <div class="row">
         <div class='container-fluid'>
-            <div class="row align-items-start">
-                <div class="col">
-                    <a class="btn btn-primary btn-sm" href="../../car/create">Adicionar Modelo</a>
-                <div class="col">
+            <div class="row align-items-start" style="margin-bottom: 10px;">
+                <div class="col-md-12 box"> 
+                    <form action="../../car/search" method="post">
+                        @csrf
+                        Buscar Cadastrado <input type="text"  name="search"><button type='submit' class='btn-primary'> Buscar </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -47,12 +43,12 @@
                                 <th>Veículo</th>
                                 <th>Link</th> 
                                 <th>Ano</th> 
-                                <th>Combustivel</th> 
-                                <th>Porta</th> 
+                                <th>Combustível</th> 
+                                <th>NºPortas</th> 
                                 <th>Quilometragem</th> 
-                                <th>Cambio</th> 
+                                <th>Câmbio</th> 
                                 <th>Cor</th> 
-                                <th>Açoes</th> 
+                                <th>Ações</th> 
                             </tr>
                         </thead>
                         <tbody>
@@ -74,7 +70,7 @@
                                 @endforeach
                             <?php else: ?>
                                 <tr>
-                                    Nao há itens cadastrados.
+                                    Nao há veículos cadastrados.
                                 </tr>
                             <?php endif; ?>
                         </tbody>

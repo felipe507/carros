@@ -31,7 +31,7 @@ class UserController extends Controller
             User::create($dados);
             $request->session()->flash(
                 'mensagem',
-                "Usuario {$dados['name']} criado(a) com sucesso "
+                "Usuário {$dados['name']} criado(a) com sucesso "
             );
             return redirect('/user/list');
         }

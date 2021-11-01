@@ -5,26 +5,22 @@
 @endsection
 
 @section('conteudo')
-    <form method="POST" action="autentica">
-        @csrf
-        <div class="container-fluid h-custom">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-              <form>
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example3">Email</label>
-                    <input type="email" id="form3Example3" class="form-control form-control-lg"
-                    placeholder="Digite seu email" name="email"/>
-                </div>
-                <div class="form-outline mb-3">
-                    <label class="form-label" for="form3Example4">Password</label>
-                    <input type="password" id="form3Example4" class="form-control form-control-lg"
-                    placeholder="Digite a senha" name="password" />
-                </div>
-                <button class='btn btn-primary'>Entrar</button>
-              </form>
-            </div>
-          </div>
-        </div>
+    <div class="jumbotron text-center">
+        <h1>Login</h1>
+    </div>
+    <form action="autentica" method="POST" style='margin: 10px'>
+      @csrf
+      <div class="form-group">
+          <label for="exampleInputEmail1">Email:</label>
+          <input type="text" name='email' class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputSenha">Senha:</label>
+        <input type="password" name='password' class="form-control" id="exampleInputSenha"  placeholder="Seu senha" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Entrar</button>
     </form>
+
+
+    
 @endsection

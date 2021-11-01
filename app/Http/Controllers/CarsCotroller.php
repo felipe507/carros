@@ -21,13 +21,19 @@ class CarsCotroller extends Controller
 
     public function capture(Request $request)
     {
-       $search = $request->input('search');
-        
+        $mensagem = $request->session()->get('mensagem');
+        return view('car/capture',['mensagem'=>$mensagem]);
+    }
+
+    public function capturar(Request $request)
+    {
+        $search = $request->input('search');
+        if(!$search){
+            $request->session()->flash('mensagem', 'Preencha o campo de captura!');
+            return redirect()->route('capturar-dados');
+        }
         $browser = new HttpBrowser(HttpClient::create());
         $crawler = $browser->request('GET', 'https://www.questmultimarcas.com.br/estoque?termo=' . $search);
-
-        //$dados['user_id'] =  auth()->user()->id;
-
         $dados = $crawler->filter('article')->each(function($node) {
             $node->filter('li')->each(function($informacoes) {
               return $informacoes->text(); 
@@ -37,11 +43,7 @@ class CarsCotroller extends Controller
         });
 
         if(!empty($dados)) {	
-            $request->session()
-            ->flash(
-                'mensagem',
-                "Dados Capturados com com sucesso"
-            );
+           
             foreach ($dados as $key) {
                 $filtro = new Crawler($key);
                 $li = $filtro->filter('li')->each(function($node) {
@@ -54,30 +56,22 @@ class CarsCotroller extends Controller
                 $car['link'] = $filtro->filter('a')->attr('href');
                 $car['nome_veiculo'] = $filtro->filter('h2 > a')->text();
                 $car['user_id'] = auth()->user()->id;
-                // $car[$li[1][0]] = $li[1][1];
-                // $car[$li[2][0]] = $li[2][1];
-                // $car[$li[3][0]] = $li[3][1];
-                // $car[$li[4][0]] = $li[4][1];
-                // $car[$li[5][0]] = $li[5][1];
-                // $car['portas'] = $filtro->filter('div .card-list__info')->text();
-                // $car['quilometragem'] = $filtro->filter('div .card-list__info')->text();
-                // $car['cambio'] = $filtro->filter('div .card-list__info')->text();
-                // $car['cor'] = $filtro->filter('div .card-list__info')->text();
-                // $car['user_id'] = auth()->user()->id;
                 Car::create($car);
+                $request->session()
+                ->flash(
+                    'mensagem',
+                    "Dados Capturados com com sucesso"
+                );
+                return redirect()->route('home');
             } 
         } else {
             $request->session()->flash(
                 'mensagem',
                 "Nenhum dado encontrado "
             );
+            return redirect()->route('capturar-dados');
         }
-        return redirect()->route('home');
-    }
-
-    public function retirarAcento($texto)
-    {
-        return $texto = str_replace( array(' ', 'à','á','â','ã','ä', 'ç', 'è','é','ê','ë', 'ì','í','î','ï', 'ñ', 'ò','ó','ô','õ','ö', 'ù','ú','û','ü', 'ý','ÿ', 'À','Á','Â','Ã','Ä', 'Ç', 'È','É','Ê','Ë', 'Ì','Í','Î','Ï', 'Ñ', 'Ò','Ó','Ô','Õ','Ö', 'Ù','Ú','Û','Ü', 'Ý'), array('_', 'a','a','a','a','a', 'c', 'e','e','e','e', 'i','i','i','i', 'n', 'o','o','o','o','o', 'u','u','u','u', 'y','y', 'A','A','A','A','A', 'C', 'E','E','E','E', 'I','I','I','I', 'N', 'O','O','O','O','O', 'U','U','U','U', 'Y'), $texto);
+        
     }
 
     public function create() {
@@ -86,8 +80,25 @@ class CarsCotroller extends Controller
 
     public function search(Request $request) {
         $search = $request->input('search');
+        if(!$search){
+            $request->session()->flash('mensagem', 'Preencha o campo de busca!');
+            return redirect()->route('home');
+        }
         $cars = Car::where(['user_id'=>auth()->user()->id])->where('nome_veiculo', 'like', '%' . $search . '%')->get();
+        if(empty($search)) {
+            $request->session()->flash(
+                'mensagem',
+                "Nenhum dado encontrado"
+            );
+        }
+        else {
+            $request->session()->flash(
+                'mensagem',
+                "Busca realizada com sucesso"
+            );
+        }
         return view('car/list', ['cars' => $cars]);
+        
     }
 
     public function save(Request $request) {
@@ -116,5 +127,10 @@ class CarsCotroller extends Controller
             "Modelo {$car->nome_veiculo} excluido(a) com sucesso "
         );
         return redirect('/');
+    }
+
+    public function retirarAcento($texto)
+    {
+        return $texto = str_replace( array(' ', 'à','á','â','ã','ä', 'ç', 'è','é','ê','ë', 'ì','í','î','ï', 'ñ', 'ò','ó','ô','õ','ö', 'ù','ú','û','ü', 'ý','ÿ', 'À','Á','Â','Ã','Ä', 'Ç', 'È','É','Ê','Ë', 'Ì','Í','Î','Ï', 'Ñ', 'Ò','Ó','Ô','Õ','Ö', 'Ù','Ú','Û','Ü', 'Ý'), array('_', 'a','a','a','a','a', 'c', 'e','e','e','e', 'i','i','i','i', 'n', 'o','o','o','o','o', 'u','u','u','u', 'y','y', 'A','A','A','A','A', 'C', 'E','E','E','E', 'I','I','I','I', 'N', 'O','O','O','O','O', 'U','U','U','U', 'Y'), $texto);
     }
 }

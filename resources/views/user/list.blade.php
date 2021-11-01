@@ -8,7 +8,7 @@
     Lista de Usuários  
 @endsection
 @section('conteudo')
-    <a href="../../user/create">Adicionar</a>
+    <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../user/create">Adicionar Usuário</a>
     
     <?php if($users->count() > 0): ?>
         <table class="table">
@@ -16,8 +16,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>E-mail</th>
-                    <th>Ação</th>
+                    <th>Email</th>
+                    <th>Ações</th>
                 </tr>  
             </thead>
             <tbody>
@@ -27,8 +27,8 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>
-                            <a class="btn btn-danger btn-sm" href="../../user/edit/{{$user->id}}">Editar</a>
-                            <a class="btn btn-secondary btn-sm" href="../../user/delete/{{$user->id}}">Excluir</a>
+                            <a class="btn btn-danger btn-sm" href="../../user/delete/{{$user->id}}">Excluir</a>
+                            <a class="btn btn-secondary btn-sm" href="../../user/edit/{{$user->id}}">Editar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

@@ -35,8 +35,12 @@ class AutenticacaoController extends Controller
         }
     }
 
-    public function sair() {
+    public function sair(Request $request) {
        Auth::logout();
+       $request->session()->flash(
+        'mensagem',
+        "Usuário Deslogado"
+        );  
        return redirect('login');
     }
 }
