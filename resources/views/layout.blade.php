@@ -27,7 +27,7 @@
         <div class="container">
             @yield('conteudo')
             @if(!empty($mensagem))
-                <div class="alert alert-success">
+                <div class="alert alert-success fixed-top">
                     {{ $mensagem }}
                 </div>
             @endif

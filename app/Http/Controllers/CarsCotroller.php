@@ -39,7 +39,7 @@ class CarsCotroller extends Controller
         if(!empty($dados)) {	
             $request->session()
             ->flash(
-                'mensage',
+                'mensagem',
                 "Dados Capturados com com sucesso"
             );
             foreach ($dados as $key) {
@@ -67,10 +67,9 @@ class CarsCotroller extends Controller
                 Car::create($car);
             } 
         } else {
-            $request->session()
-            ->flash(
-                'mensage',
-                "Nenhum dado encontrado"
+            $request->session()->flash(
+                'mensagem',
+                "Nenhum dado encontrado "
             );
         }
         return redirect()->route('home');
