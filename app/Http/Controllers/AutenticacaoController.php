@@ -14,7 +14,8 @@ class AutenticacaoController extends Controller
             return redirect()->route('home');
         }
         $mensagem = $request->session()->get('mensagem');
-        return view('login',['mensagem'=> $mensagem]);
+        $tipo = $request->session()->get('tipo');        
+        return view('login',['mensagem'=> $mensagem, 'tipo' => $tipo]);
     }
 
     public function authenticate(Request $request) {
@@ -27,20 +28,16 @@ class AutenticacaoController extends Controller
         if ( Auth::attempt( ['email' => $email, 'password' => $password] )) {
            return redirect('/');
         } else {
-            $request->session()->flash(
-                'mensagem',
-                "Credenciais não autorizada "
-            );
+            $request->session()->flash('mensagem',"Credencial não autorizada");
+            $request->session()->flash('tipo',"alert-danger");
             return redirect('login');
         }
     }
 
     public function sair(Request $request) {
-       Auth::logout();
-       $request->session()->flash(
-        'mensagem',
-        "Usuário Deslogado"
-        );  
-       return redirect('login');
+        Auth::logout();
+        $request->session()->flash('mensagem',"Usuário Deslogado");  
+        $request->session()->flash('tipo',"alert-danger");
+        return redirect('login');
     }
 }

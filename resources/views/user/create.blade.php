@@ -8,7 +8,7 @@
         @csrf
         <div class="form-group">
             <label for="exampleInputEmail1">Nome</label>
-            <input type="text" name='name' class="form-control"  placeholder="Seu email" required>
+            <input type="text" name='name' class="form-control"  placeholder="Seu nome" required>
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Endereço de email</label>

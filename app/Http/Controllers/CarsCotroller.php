@@ -16,13 +16,15 @@ class CarsCotroller extends Controller
     public function index(Request $request)
     {
         $mensagem = $request->session()->get('mensagem');
-        return view('car/list', ['cars' => Car::where(['user_id'=>auth()->user()->id])->get()], compact('mensagem'));	
+        $tipo = $request->session()->get('tipo');
+        return view('car/list', ['cars' => Car::where(['user_id'=>auth()->user()->id])->get()], compact('mensagem','tipo'));	
     }
 
     public function capture(Request $request)
     {
         $mensagem = $request->session()->get('mensagem');
-        return view('car/capture',['mensagem'=>$mensagem]);
+        $tipo = $request->session()->get('tipo');
+        return view('car/capture', compact('mensagem','tipo'));
     }
 
     public function capturar(Request $request)
@@ -30,6 +32,7 @@ class CarsCotroller extends Controller
         $search = $request->input('search');
         if(!$search){
             $request->session()->flash('mensagem', 'Preencha o campo de captura!');
+            $request->session()->flash('tipo',"alert-danger");
             return redirect()->route('capturar-dados');
         }
         $browser = new HttpBrowser(HttpClient::create());
@@ -41,9 +44,7 @@ class CarsCotroller extends Controller
 
             return $node->html();
         });
-
         if(!empty($dados)) {	
-           
             foreach ($dados as $key) {
                 $filtro = new Crawler($key);
                 $li = $filtro->filter('li')->each(function($node) {
@@ -57,18 +58,13 @@ class CarsCotroller extends Controller
                 $car['nome_veiculo'] = $filtro->filter('h2 > a')->text();
                 $car['user_id'] = auth()->user()->id;
                 Car::create($car);
-                $request->session()
-                ->flash(
-                    'mensagem',
-                    "Dados Capturados com com sucesso"
-                );
+                $request->session()->flash('mensagem',"Veículos encontrados cadastrados");
+                $request->session()->flash('tipo',"alert-success");
                 return redirect()->route('home');
             } 
         } else {
-            $request->session()->flash(
-                'mensagem',
-                "Nenhum dado encontrado "
-            );
+            $request->session()->flash('mensagem',"Nenhum dado encontrado");
+            $request->session()->flash('tipo',"alert-danger");
             return redirect()->route('capturar-dados');
         }
         
@@ -79,25 +75,25 @@ class CarsCotroller extends Controller
     }
 
     public function search(Request $request) {
+        $mensagem = $request->session()->get('mensagem');
+        $tipo = $request->session()->get('tipo');
         $search = $request->input('search');
         if(!$search){
             $request->session()->flash('mensagem', 'Preencha o campo de busca!');
+            $request->session()->flash('tipo',"alert-danger");
             return redirect()->route('home');
         }
         $cars = Car::where(['user_id'=>auth()->user()->id])->where('nome_veiculo', 'like', '%' . $search . '%')->get();
         if(empty($search)) {
-            $request->session()->flash(
-                'mensagem',
-                "Nenhum dado encontrado"
-            );
+            $request->session()->flash('mensagem',"Nenhum dado encontrado");
+            $request->session()->flash('tipo',"alert-danger");
+            return redirect()->route('home');
         }
-        else {
-            $request->session()->flash(
-                'mensagem',
-                "Busca realizada com sucesso"
-            );
-        }
-        return view('car/list', ['cars' => $cars]);
+
+        $request->session()->flash('mensagem',"Busca realizada com sucesso");
+        $request->session()->flash('tipo',"alert-success");
+    
+        return view('car/list', ['cars' => $cars, 'mensagem' => $mensagem, 'tipo' => $tipo]);
         
     }
 
@@ -112,20 +108,16 @@ class CarsCotroller extends Controller
         $dados['cambio'] = $request->input('cambio');
         $dados['cor'] = $request->input('cor');
         $car = Car::create($dados);
-        $request->session()->flash(
-            'mensagem',
-            "Modelo {$car->nome_veiculo} criado(a) com sucesso "
-        );
+        $request->session()->flash('mensagem',"Modelo {$car->nome_veiculo} criado(a) com sucesso ");
+        $request->session()->flash('tipo',"alert-success");
         return redirect('/');
     }
 
     public function delete($id, Request $request) {
         $car = Car::where('id', $id)->first();
         $car->delete();
-        $request->session()->flash(
-            'mensagem',
-            "Modelo {$car->nome_veiculo} excluido(a) com sucesso "
-        );
+        $request->session()->flash('mensagem',"Modelo {$car->nome_veiculo} excluido(a) com sucesso");
+        $request->session()->flash('tipo',"alert-success");
         return redirect('/');
     }
 

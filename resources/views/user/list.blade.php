@@ -8,8 +8,15 @@
     Lista de Usuários  
 @endsection
 @section('conteudo')
-    <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../user/create">Adicionar Usuário</a>
-    
+    <div class="row">
+        <div class='container-fluid'>
+            <div class="row align-items-start">
+                <div class="col">
+                    <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../user/create">Adicionar Usuário</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <?php if($users->count() > 0): ?>
         <table class="table">
             <thead>

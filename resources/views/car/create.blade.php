@@ -6,34 +6,38 @@
 @section('conteudo')
     <form action="../../car/save" method="POST">
         @csrf
-        <label>Nome do veiculo
-            <input type='text' name='nome_veiculo'>
-        </label>
-        <label>Link
-            <input type='text' name='link'>
-        </label>
-        <label>Ano
-            <input type='text' name='ano'>
-        </label>
-        <label>Combustivel
-            <input type='text' name='combustivel'>
-        </label>
-        <label>Porta
-            <input type='checkbox' value='2' name='portas'>2
-            <input type='checkbox' value='3'name='portas'>3
-            <input type='checkbox' value='4'name='portas'>4
-        </label>
-        <label>Quilometragem
-            <input type='text' name='quilometragem'>
-        </label>
-        <label>Cambio
-            <input type='text' name='cambio'>
-        </label>
-        <label>Cor
-            <input type='text' name='cor'>
-        </label>
-        <button type='submit'>
-            Cadastrar
-        </button>
-    </form>
+        <div class="form-group">
+            <label>Nome do veiculo</label>
+            <input type='text' name='nome_veiculo' class="form-control" placeholder="Digite modelo do veículo" required>
+        </div>
+        <div class="form-group">
+          <label>Link</label>
+          <input type="text" name='link' class="form-control" placeholder="Link" required>
+        </div>
+        <div class="form-group">
+          <label>Ano</label>
+          <input type="number" name='ano' class="form-control" placeholder="Qual ano?" required>
+        </div>
+        <div class="form-group">
+            <label>Quilometragem</label>
+            <input type="number" name='quilometragem' class="form-control" placeholder="Quantas quilometros?" required>
+        </div>
+        <div class="form-group">
+            <label>Cambio</label>
+            <input type="text" name='cambio' class="form-control" placeholder="Quantas câmbio?" required>
+        </div>
+        <div class="form-group">
+            <label>Número Porta</label>
+            <input type="text" name='portas' class="form-control" placeholder="Quantas portas?" required>
+        </div>
+        <div class="form-group">
+            <label>Combustível</label>
+            <input type="text" name='combustivel' class="form-control" placeholder="Qual combustível" required>
+        </div>
+        <div class="form-group">
+            <label>Cor</label>
+            <input type="text" name='cor' class="form-control" placeholder="Qual cor do veiculo" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Adicionar</button>
+      </form>
 @endsection

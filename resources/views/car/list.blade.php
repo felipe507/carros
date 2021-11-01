@@ -12,9 +12,8 @@
         <div class='container-fluid'>
             <div class="row align-items-start">
                 <div class="col">
-                    <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../car/create">Adicionar Modelo</a>
+                    <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../car/create">Adicionar Modelo Manualmente</a>
                     <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../car/capture">Capturar Modelos</a>
-
                 </div>
             </div>
         </div>
@@ -22,7 +21,7 @@
 
     <div class="row">
         <div class='container-fluid'>
-            <div class="row align-items-start" style="margin-bottom: 10px;">
+            <div class="row align-items-start text-center" style="margin-bottom: 10px;">
                 <div class="col-md-12 box"> 
                     <form action="../../car/search" method="post">
                         @csrf

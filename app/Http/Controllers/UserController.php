@@ -10,8 +10,9 @@ class UserController extends Controller
 {
     public function index(Request $request) {
         $users = User::all();
+        $tipo = $request->session()->get('tipo');
         $mensagem = $request->session()->get('mensagem');
-        return view('user/list',['users'=> $users, 'mensagem'=> $mensagem]);
+        return view('user/list',['users'=> $users, 'mensagem'=> $mensagem, 'tipo' => $tipo]);
     }
 
     public function save(Request $request) {
@@ -22,17 +23,13 @@ class UserController extends Controller
             $id = $request->input('id');
             $user = User::find($id);
             $user->update($dados);
-            $request->session()->flash(
-                'mensagem',
-                "Usuário {$dados['name']} atualizado(a) com sucesso "
-            );
+            $request->session()->flash('mensagem',"Usuário {$dados['name']} atualizado(a) com sucesso");   
+            $request->session()->flash('tipo',"alert-success"); 
             return redirect('/user/list');
         } else {
             User::create($dados);
-            $request->session()->flash(
-                'mensagem',
-                "Usuário {$dados['name']} criado(a) com sucesso "
-            );
+            $request->session()->flash('mensagem',"Usuário {$dados['name']} criado(a) com sucesso ");
+            $request->session()->flash('tipo',"alert-success");         
             return redirect('/user/list');
         }
     }
@@ -49,10 +46,8 @@ class UserController extends Controller
     public function delete($id, Request $request) {
         $user = User::where('id', $id)->first();
         $user->delete();
-        $request->session()->flash(
-            'mensagem',
-            "Usuario {$user['name']} excluido(a) com sucesso "
-        );
+        $request->session()->flash('mensagem',"Usuario {$user['name']} excluido(a) com sucesso ");
+        $request->session()->flash('tipo',"alert-success"); 
         return redirect('/user/list');
     }
 }
