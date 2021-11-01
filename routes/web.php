@@ -31,3 +31,4 @@ Route::get('car/create', [CarsCotroller::class, 'create'])->name('criar-carro')-
 Route::get('car/delete/{id}', [CarsCotroller::class, 'delete'])->name('deletar-carro')->middleware('auth');
 Route::post('car/save', [CarsCotroller::class, 'save'])->name('deletar-carro')->middleware('auth');
 Route::post('/car/capture', [CarsCotroller::class, 'capture'])->middleware('auth');
+Route::post('/car/search', [CarsCotroller::class, 'search'])->middleware('auth');

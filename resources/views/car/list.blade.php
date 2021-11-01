@@ -13,6 +13,10 @@
         @csrf
         Importar Dados <input type="text"  name="search"><button type='submit' class='btn-primary'> Capturar </button>
     </form>
+    <form action="../../car/search" method="post">
+        @csrf
+       Buscar carros Cadastrados<input type="text"  name="search"><button type='submit' class='btn-primary'> Buscar </button>
+    </form>
     <?php if(!empty($cars)): ?>
         <table class="table">
             <thead class="thead">
@@ -47,13 +51,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <?php foreach($cars as $car): ?>
+                <?php foreach($cars as $car): ?>
+                    <tr>
                         <td>
                             <?php echo $car->nome_veiculo ?> 
                         </td>
                         <td>
-                            <?php echo $car->link ?> 
+                            <a href='<?php echo $car->link ?> '> <?php echo $car->link ?> </a>
                         </td> 
                         <td>
                             <?php echo $car->ano ?> 
@@ -76,8 +80,8 @@
                         <td>
                             <a href="../../car/delete/<?php echo $car->id ?>"> Excluir </a>
                         </td>    
-                    <?php endforeach; ?>
-                </tr>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     <?php endif; ?>
