@@ -19,19 +19,14 @@ class AutenticacaoController extends Controller
     }
 
     public function authenticate(Request $request) {
-        validator($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required'
-        ])->validate();
         $password = $request->input('password');
         $email = $request->input('email');
         if ( Auth::attempt( ['email' => $email, 'password' => $password] )) {
            return redirect('/');
-        } else {
-            $request->session()->flash('mensagem',"Credencial não autorizada");
-            $request->session()->flash('tipo',"alert-danger");
-            return redirect('login');
-        }
+        } 
+        $request->session()->flash('mensagem',"Credencial não autorizada");
+        $request->session()->flash('tipo',"alert-danger");
+        return redirect('login'); 
     }
 
     public function sair(Request $request) {

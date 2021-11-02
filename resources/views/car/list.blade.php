@@ -61,8 +61,8 @@
                                             <td>{{$car->ano}}</td>
                                             <td>{{$car->combustivel}}</td>
                                             <td>{{$car->portas}}</td>
+                                            <td>{{$car->quilometragem}} . km</td>
                                             <td>{{$car->cambio}}</td>
-                                            <td>{{$car->quilometragem}}</td>
                                             <td>{{$car->cor}}</td>
                                             <td>
                                                 <a class="btn btn-danger btn-sm" href="../../car/delete/{{$car->id}}">Excluir</a>
