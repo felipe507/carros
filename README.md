@@ -1,11 +1,11 @@
 
 # Projeto Teste Quest Multimarcas
 
-# Informções
+##s Informções
 Linguagem - PHP
 Framework - Laravel 8.68.1
 
-# Descrição
+## Descrição
 O sistema possui uma autenticação utilizando o padrão do Laravel, e um sistema de gerenciar usuários e veiculos.
 O projeto realiza uma requisição com PHP ao site MultiMarcas (https://www.questmultimarcas.com.br/estoque) salvando  as informações dos veículos no banco de dados de acordo termo pesquisado utilizando REGEX para separar os campos, na captura de dados.
 
