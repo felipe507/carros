@@ -17,7 +17,7 @@ class CarsCotroller extends Controller
     {
         $mensagem = $request->session()->get('mensagem');
         $tipo = $request->session()->get('tipo');
-        return view('car/list', ['cars' => Car::where(['user_id'=>auth()->user()->id])->get()], compact('mensagem','tipo'));	
+        return view('car/list', ['cars' => Car::where(['user_id'=>auth()->user()->id])->orderBy('id', 'DESC')->get()], compact('mensagem','tipo'));	
     }
 
     public function capture(Request $request)
@@ -66,8 +66,6 @@ class CarsCotroller extends Controller
             $request->session()->flash('tipo',"alert-danger");
         }
         return redirect()->route('home');
-
-        
     }
 
     public function create() {

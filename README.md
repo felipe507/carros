@@ -23,6 +23,6 @@ Rodar servidor - php artisan serve
     - Autenticar usuários credenciados
     - Gerenciar usuários (adicionar, editar, listar, deletar).
     - Gerenciar Modelos de automóveis (listar, capturar automóveis de uma página externa, adicionar manualmente, deletar, buscar).
-.
+
 ## License
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
