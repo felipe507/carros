@@ -6,7 +6,7 @@ Instalar Dependências
 - composer install
 - composer update
 
-Execultar todas as migrations (usuário, carros)
+Execultar todas as migrações para banco de dados (usuário, carros)
 - php artisan migrate 
 
 Inserir o primeiro usuário (email:admin@admin.com, senha: admin)
