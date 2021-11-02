@@ -43,11 +43,17 @@ class UserController extends Controller
         return view('user/edit',['user' => $user]);
     }
 
-    public function delete($id, Request $request) {
-        $user = User::where('id', $id)->first();
-        $user->delete();
-        $request->session()->flash('mensagem',"Usuario {$user['name']} excluido(a) com sucesso ");
-        $request->session()->flash('tipo',"alert-success"); 
-        return redirect('/user/list');
+    public function delete($id = null, Request $request) {
+        if ($id != null) {
+            $user = User::where('id', $id)->first();
+            $user->delete();
+            $request->session()->flash('mensagem',"Usuario {$user['name']} excluido(a) com sucesso ");
+            $request->session()->flash('tipo',"alert-success"); 
+            return redirect('/user/list');
+        } else {
+            $request->session()->flash('mensagem',"Usuario não encontrado ");
+            $request->session()->flash('tipo',"alert-danger"); 
+            return redirect('/user/list');
+        }
     }
 }
