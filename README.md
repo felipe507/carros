@@ -33,6 +33,7 @@ Rodar servidor
 ## Lib utilizadas (link CDN)
     - Boostrap(https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p)
     - Font awesome(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T)
+    - Jquery(https://code.jquery.com/jquery-3.3.1.slim.min.js)
 
 ## Funções Projeto
 
