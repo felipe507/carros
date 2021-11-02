@@ -1,11 +1,11 @@
 @extends('layout')
 
 @section('titulo')
-    Lista de Usuários
+    Lista de usuários
 @endsection
 
 @section('cabecalho')
-    Lista de Usuários  
+    Lista de usuários  
 @endsection
 @section('conteudo')
     <div class="container">

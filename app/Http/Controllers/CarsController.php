@@ -62,7 +62,7 @@ class CarsController extends Controller
             } 
             return redirect()->route('home');
         } else {
-            $request->session()->flash('mensagem',"Nenhum dado encontrado");
+            $request->session()->flash('mensagem',"Nenhum veículo cadastrado");
             $request->session()->flash('tipo',"alert-danger");
         }
     }
@@ -77,7 +77,7 @@ class CarsController extends Controller
         $search = $request->input('search');
         $checkCars = Car::all();
         if($checkCars->isEmpty()) {
-            $request->session()->flash('mensagem',"Nenhum veículo cadastrado");
+            $request->session()->flash('mensagem',"Nenhum veículo foi cadastrado");
             $request->session()->flash('tipo',"alert-danger");
             return redirect()->route('home');
         }

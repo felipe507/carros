@@ -5,7 +5,7 @@
 @endsection
 
 @section('cabecalho')
-    Lista de veículos Cadastrados
+    Lista de veículos cadastrados
 @endsection
 @section('conteudo')
     <div class="col mx-auto">
@@ -64,7 +64,7 @@
                                     @endforeach
                                 <?php else: ?>
                                     <tr>
-                                        Nao há veículos cadastrados.
+                                        Não há veículos cadastrados.
                                     </tr>
                                 <?php endif; ?>
                             </tbody>
