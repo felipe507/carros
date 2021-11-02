@@ -10,7 +10,7 @@
     </div>
     <div class="container">
       <div class="col mx-auto">
-        <form action="autentica" method="POST" style='margin: 10px'>
+        <form action="authenticate" method="POST" style='margin: 10px'>
           @csrf
           <div class="form-group">
               <label for="exampleInputEmail1">Email:</label>

@@ -7,7 +7,7 @@
     <div class="text-center"> 
         <form action="../../car/capturar" method="post">
             @csrf
-            <b>Capturar Dados</b><br> <input type="text"  name="search"><button type='submit' class='btn-primary'> Capturar </button>
+            <h3><b>Capturar Dados de Veículos</b></h3><br> <input type="text" name="search"><button type='submit' class='btn-primary'> <i class="fas fa-search"></i> </button>
         </form>
     </div>
 @endsection

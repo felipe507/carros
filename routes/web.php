@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\AutenticacaoController;
-use App\Http\Controllers\CarsCotroller;
+use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\CarsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,20 +18,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('user/list', [UserController::class, 'index'])->middleware('auth');
-Route::get('login', [AutenticacaoController::class, 'login'])->name('login');
+Route::get('login', [AuthenticationController::class, 'login'])->name('login');
 Route::get('user/delete/{id}', [UserController::class, 'delete'])->middleware('auth');
 Route::get('user/create', [UserController::class, 'create'])->middleware('auth');
 Route::post('user/save', [UserController::class, 'save'])->middleware('auth');
 Route::get('user/edit/{id}', [UserController::class, 'edit'])->middleware('auth');
-Route::post('autentica', [AutenticacaoController::class, 'authenticate'])->name('autentica');
-Route::get('sair', [AutenticacaoController::class, 'sair'])->middleware('auth');
+Route::post('authenticate', [AuthenticationController::class, 'authenticate']);
+Route::get('logout', [AuthenticationController::class, 'logout'])->middleware('auth');
 
-Route::get('/', [CarsCotroller::class, 'index'])->name('home')->middleware('auth');
-Route::get('car/create', [CarsCotroller::class, 'create'])->name('criar-carro')->middleware('auth');
-Route::get('car/delete/{id}', [CarsCotroller::class, 'delete'])->name('deletar-carro')->middleware('auth');
-Route::post('car/save', [CarsCotroller::class, 'save'])->name('deletar-carro')->middleware('auth');
-Route::post('/car/capturar', [CarsCotroller::class, 'capturar'])->middleware('auth');
-Route::post('/car/search', [CarsCotroller::class, 'search'])->middleware('auth');
-Route::get('/car/capture', [CarsCotroller::class, 'capture'])->name('capturar-dados')->middleware('auth');
-Route::get('/car/deleteall', [CarsCotroller::class, 'deleteall'])->middleware('auth');
+Route::get('/', [CarsController::class, 'index'])->name('home')->middleware('auth');
+Route::get('car/create', [CarsController::class, 'create'])->middleware('auth');
+Route::get('car/delete/{id}', [CarsController::class, 'delete'])->middleware('auth');
+Route::post('car/save', [CarsController::class, 'save'])->middleware('auth');
+Route::post('/car/capturar', [CarsController::class, 'capturar'])->middleware('auth');
+Route::post('/car/search', [CarsController::class, 'search'])->middleware('auth');
+Route::get('/car/capture', [CarsController::class, 'capture'])->name('capturar-dados')->middleware('auth');
+Route::get('/car/deleteall', [CarsController::class, 'deleteall'])->middleware('auth');
 

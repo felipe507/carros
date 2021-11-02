@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\RateLimiter\RequestRateLimiterInterface;
 
-class CarsCotroller extends Controller
+class CarsController extends Controller
 {
     public function index(Request $request)
     {
@@ -41,7 +41,6 @@ class CarsCotroller extends Controller
             $node->filter('li')->each(function($informacoes) {
               return $informacoes->text(); 
             });
-
             return $node->html();
         });
         if(!empty($dados)) {	
@@ -61,11 +60,11 @@ class CarsCotroller extends Controller
                 $request->session()->flash('mensagem',"Veículos encontrados cadastrados");
                 $request->session()->flash('tipo',"alert-success");
             } 
+            return redirect()->route('home');
         } else {
             $request->session()->flash('mensagem',"Nenhum dado encontrado");
             $request->session()->flash('tipo',"alert-danger");
         }
-        return redirect()->route('home');
     }
 
     public function create() {
@@ -91,8 +90,7 @@ class CarsCotroller extends Controller
         $request->session()->flash('mensagem',"Busca realizada com sucesso");
         $request->session()->flash('tipo',"alert-success");
     
-        return view('car/list', ['cars' => $cars, 'mensagem' => $mensagem, 'tipo' => $tipo]);
-        
+        return view('car/list', ['cars' => $cars, 'mensagem' => $mensagem, 'tipo' => $tipo]);  
     }
 
     public function save(Request $request) {

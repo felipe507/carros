@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class AutenticacaoController extends Controller
+class AuthenticationController extends Controller
 {
     public function login(Request $request) {
         if (Auth::check()) {
@@ -29,7 +29,7 @@ class AutenticacaoController extends Controller
         return redirect('login'); 
     }
 
-    public function sair(Request $request) {
+    public function logout(Request $request) {
         Auth::logout();
         $request->session()->flash('mensagem',"Usuário Deslogado");  
         $request->session()->flash('tipo',"alert-danger");

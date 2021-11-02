@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Veículos - @yield('titulo')</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></head>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
 <body>
     <?php if(auth()->check()): ?>
         <div class="row">
@@ -15,7 +17,7 @@
                     <h1>@yield('cabecalho')</h1>  |
                     <a href='../../user/list'>Gerenciamento Usuário</a> |
                     <a href='../../'>Gerenciamento Carros</a> |
-                    <a href="../../sair">Sair</a> 
+                    <a href="../../logout">Sair</a> 
                 </div>
             </div>
         </div>

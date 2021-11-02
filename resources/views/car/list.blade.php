@@ -27,7 +27,7 @@
                     <div class="col-md-12 box"> 
                         <form action="../../car/search" method="post">
                             @csrf
-                            Buscar Cadastrado <input type="text"  name="search"><button type='submit' class='btn-primary'> Buscar </button>
+                            Buscar Veículo Cadastrado <input type="text"  name="search"><button type='submit' class='btn-primary'> <i class="fas fa-search"></i>  </button>
                         </form>
                     </div>
                 </div>
