@@ -1,7 +1,7 @@
 
 # Projeto Teste Quest Multimarcas
 
-##s Informções
+## Informções
 Linguagem - PHP
 Framework - Laravel 8.68.1
 
