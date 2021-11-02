@@ -33,5 +33,5 @@ Route::post('car/save', [CarsController::class, 'save'])->middleware('auth');
 Route::post('/car/capturar', [CarsController::class, 'capturar'])->middleware('auth');
 Route::post('/car/search', [CarsController::class, 'search'])->middleware('auth');
 Route::get('/car/capture', [CarsController::class, 'capture'])->name('capturar-dados')->middleware('auth');
-Route::get('/car/deleteall', [CarsController::class, 'deleteall'])->middleware('auth');
+Route::get('/car/deleteAll', [CarsController::class, 'deleteall'])->middleware('auth');
 

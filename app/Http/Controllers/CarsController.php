@@ -75,7 +75,13 @@ class CarsController extends Controller
         $mensagem = $request->session()->get('mensagem');
         $tipo = $request->session()->get('tipo');
         $search = $request->input('search');
-        if(!$search){
+        $checkCars = Car::all();
+        if($checkCars->isEmpty()) {
+            $request->session()->flash('mensagem',"Nenhum veículo cadastrado");
+            $request->session()->flash('tipo',"alert-danger");
+            return redirect()->route('home');
+        }
+        if(!$search) {
             $request->session()->flash('mensagem', 'Preencha o campo de busca!');
             $request->session()->flash('tipo',"alert-danger");
             return redirect()->route('home');
@@ -123,9 +129,14 @@ class CarsController extends Controller
          }
     }
 
-    public function deleteall(Request $request) {
-        $car = Car::all();
-        foreach ($car as $key) {
+    public function deleteAll(Request $request) {
+        $cars = Car::all();
+       if($cars->isEmpty()) {
+            $request->session()->flash('mensagem',"Nenhum veículo foi cadastrado");
+            $request->session()->flash('tipo',"alert-danger");
+            return redirect()->route('home');
+        }
+        foreach ($cars as $key) {
             $key->delete();
         }
         $request->session()->flash('mensagem',"Todos os modelos foram excluidos com sucesso");
