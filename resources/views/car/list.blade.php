@@ -15,13 +15,17 @@
                     <div class="col-md-6 box">
                         <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../car/create">Adicionar modelo manualmente</a>
                         <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../car/capture">Capturar modelos</a>
-                        <a class="btn btn-danger btn-sm" style="margin-bottom: 10px;" href="../../car/deleteall">Deletar dados</a>
+                        <?php if($cars->count() > 0): ?>
+                            <a class="btn btn-danger btn-sm" style="margin-bottom: 10px;" href="../../car/deleteall">Deletar dados</a>
+                        <?php endif; ?>
                     </div>
                     <div class="col-md-6 box">
+                        <?php if($cars->count() > 0): ?>
                         <form action="../../car/search" method="post">
                             @csrf
                             Buscar veículo cadastrado: <input type="text"  name="search"><button type='submit' class='btn-primary'> <i class="fas fa-search"></i>  </button>
                         </form>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
