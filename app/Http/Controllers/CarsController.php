@@ -62,8 +62,9 @@ class CarsController extends Controller
             } 
             return redirect()->route('home');
         } else {
-            $request->session()->flash('mensagem',"Nenhum veículo cadastrado");
+            $request->session()->flash('mensagem',"Nenhum veículo encontrado");
             $request->session()->flash('tipo',"alert-danger");
+            return redirect()->route('capturar-dados');
         }
     }
 

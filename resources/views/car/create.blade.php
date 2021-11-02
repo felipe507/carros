@@ -17,15 +17,15 @@
                 </div>
                 <div class="form-group">
                 <label>Link:</label>
-                <input type="text" name='link' class="form-control" placeholder="Link" required>
+                <input type="text" name='link' class="form-control" placeholder="Link do automóvel" required>
                 </div>
                 <div class="form-group">
                 <label>Ano:</label>
                 <input type="number" name='ano' class="form-control" placeholder="Qual ano?" required>
                 </div>
                 <div class="form-group">
-                    <label>Quilometragem:/label>
-                    <input type="number" name='quilometragem' class="form-control" placeholder="Quantos quilometros rodados?" required>
+                    <label>Quilometragem:</label>
+                    <input type="number" name='quilometragem' class="form-control" placeholder="Quantos quilometros?" required>
                 </div>
                 <div class="form-group">
                     <label>Câmbio:</label>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="form-group">
                     <label>Cor:</label>
-                    <input type="text" name='cor' class="form-control" placeholder="Qual cor do veículo" required>
+                    <input type="text" name='cor' class="form-control" placeholder="Qual cor do veículo?" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Adicionar</button>
             </form>
