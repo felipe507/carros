@@ -60,13 +60,13 @@ class CarsCotroller extends Controller
                 Car::create($car);
                 $request->session()->flash('mensagem',"Veículos encontrados cadastrados");
                 $request->session()->flash('tipo',"alert-success");
-                return redirect()->route('home');
             } 
         } else {
             $request->session()->flash('mensagem',"Nenhum dado encontrado");
             $request->session()->flash('tipo',"alert-danger");
-            return redirect()->route('capturar-dados');
         }
+        return redirect()->route('home');
+
         
     }
 
@@ -84,7 +84,7 @@ class CarsCotroller extends Controller
             return redirect()->route('home');
         }
         $cars = Car::where(['user_id'=>auth()->user()->id])->where('nome_veiculo', 'like', '%' . $search . '%')->get();
-        if(empty($search)) {
+        if($cars->isEmpty()) {
             $request->session()->flash('mensagem',"Nenhum dado encontrado");
             $request->session()->flash('tipo',"alert-danger");
             return redirect()->route('home');
@@ -114,11 +114,17 @@ class CarsCotroller extends Controller
     }
 
     public function delete($id, Request $request) {
-        $car = Car::where('id', $id)->first();
-        $car->delete();
-        $request->session()->flash('mensagem',"Modelo {$car->nome_veiculo} excluido(a) com sucesso");
-        $request->session()->flash('tipo',"alert-success");
-        return redirect('/');
+       if($id) {
+            $car = Car::where('id', $id)->first();
+            $car->delete();
+            $request->session()->flash('mensagem',"Modelo {$car->nome_veiculo} excluido(a) com sucesso");
+            $request->session()->flash('tipo',"alert-success");
+            return redirect('/');
+         } else {
+            $request->session()->flash('mensagem',"Erro ao deletar modelo");
+            $request->session()->flash('tipo',"alert-danger");
+            return redirect('/');
+         }
     }
 
     public function deleteall(Request $request) {
