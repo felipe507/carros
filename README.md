@@ -2,8 +2,8 @@
 # Projeto Teste Quest Multimarcas
 
 ## Informções
-Linguagem - PHP
-Framework - Laravel 8.68.1
+- Linguagem - PHP
+- Framework - Laravel 8.68.1
 
 ## Descrição
 O sistema possui uma autenticação utilizando o padrão do Laravel, e um sistema de gerenciar usuários e veiculos.
