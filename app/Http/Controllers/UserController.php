@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use GuzzleHttp\Psr7\Request as Psr7Request;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+
+use function PHPUnit\Framework\isEmpty;
 
 class UserController extends Controller
 {
@@ -27,6 +30,17 @@ class UserController extends Controller
             $request->session()->flash('tipo',"alert-success"); 
             return redirect('/user/list');
         } else {
+            $checkEmail = User::where(['email' => $dados['email']])->first();
+            if(!empty($checkEmail)) {
+                $request->session()->flash('mensagem',"Erro email já cadastrado");   
+                $request->session()->flash('tipo',"alert-danger"); 
+                return redirect('/user/create');
+            } else {
+                $user = User::create($dados);
+                $request->session()->flash('mensagem',"Usuário {$dados['name']} cadastrado(a) com sucesso");   
+                $request->session()->flash('tipo',"alert-success"); 
+                return redirect('/user/list');
+            }
             User::create($dados);
             $request->session()->flash('mensagem',"Usuário {$dados['name']} criado(a) com sucesso ");
             $request->session()->flash('tipo',"alert-success");         
@@ -34,8 +48,10 @@ class UserController extends Controller
         }
     }
 
-    public function create() {
-        return view('user/create');
+    public function create(Request $request) {
+        $mensagem = $request->session()->get('mensagem');
+        $tipo = $request->session()->get('tipo');
+        return view('user/create', ['mensagem'=> $mensagem, 'tipo' => $tipo]);
     }
 
     public function edit($id) {

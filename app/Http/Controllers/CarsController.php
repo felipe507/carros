@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\RateLimiter\RequestRateLimiterInterface;
 class CarsController extends Controller
 {
     public function index(Request $request)
-    {
+    {   
         $mensagem = $request->session()->get('mensagem');
         $tipo = $request->session()->get('tipo');
         return view('car/list', ['cars' => Car::where(['user_id'=>auth()->user()->id])->orderBy('id', 'DESC')->get()], compact('mensagem','tipo'));	
@@ -68,8 +68,10 @@ class CarsController extends Controller
         }
     }
 
-    public function create() {
-        return view('car/create');
+    public function create(Request $request) {
+        $mensagem = $request->session()->get('mensagem');
+        $tipo = $request->session()->get('tipo');
+        return view('car/create', compact('mensagem','tipo'));
     }
 
     public function search(Request $request) {
