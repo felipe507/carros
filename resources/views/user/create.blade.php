@@ -4,7 +4,9 @@
     Criar usuario 
 @endsection
 @section('conteudo')
-    <form action="../../user/save" method="POST">
+  <div class="container">
+    <div class="col mx-auto">
+      <form action="../../user/save" method="POST">
         @csrf
         <div class="form-group">
             <label for="exampleInputEmail1">Nome</label>
@@ -20,4 +22,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Adicionar</button>
       </form>
+    </div>
+  </div>
 @endsection
