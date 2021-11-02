@@ -13,14 +13,14 @@
             <div class='container-fluid'>
                 <div class="row align-items-start">
                     <div class="col-md-6 box">
-                        <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../car/create">Adicionar Modelo Manualmente</a>
-                        <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../car/capture">Capturar Modelos</a>
-                        <a class="btn btn-danger btn-sm" style="margin-bottom: 10px;" href="../../car/deleteall">Deletar Carros</a>
+                        <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../car/create">Adicionar modelo manualmente</a>
+                        <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../car/capture">Capturar modelos</a>
+                        <a class="btn btn-danger btn-sm" style="margin-bottom: 10px;" href="../../car/deleteall">Deletar dados</a>
                     </div>
                     <div class="col-md-6 box">
                         <form action="../../car/search" method="post">
                             @csrf
-                            Buscar Veículo Cadastrado: <input type="text"  name="search"><button type='submit' class='btn-primary'> <i class="fas fa-search"></i>  </button>
+                            Buscar veículo cadastrado: <input type="text"  name="search"><button type='submit' class='btn-primary'> <i class="fas fa-search"></i>  </button>
                         </form>
                     </div>
                 </div>
