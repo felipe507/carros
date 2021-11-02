@@ -10,9 +10,10 @@ Execultar todas as migrations (usuário, carros)
 - php artisan migrate 
 
 Inserir o primeiro usuário (email:admin@admin.com, senha: admin)
-- php artisan - db:seed --class=UsersTableSeeder
+- php artisan db:seed --class=UsersTableSeeder
 
-Rodar servidor - php artisan serve
+Rodar servidor 
+- php artisan serve
 
 ## Dependencias projeto
     ```
