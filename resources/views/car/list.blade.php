@@ -72,6 +72,9 @@
                                     </tr>
                                 <?php endif; ?>
                             </tbody>
+                            <?php if($cars->count() > 0 ): ?>
+                                Número de veículos cadastrados: {{$cars->count()}}
+                            <?php endif; ?>
                         </table>
                     </div>
                 </div>

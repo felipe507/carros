@@ -44,6 +44,7 @@ class CarsController extends Controller
             return $node->html();
         });
         if(!empty($dados)) {	
+            $count = 0;
             foreach ($dados as $key) {
                 $filtro = new Crawler($key);
                 $li = $filtro->filter('li')->each(function($node) {
@@ -57,9 +58,10 @@ class CarsController extends Controller
                 $car['nome_veiculo'] = $filtro->filter('h2 > a')->text();
                 $car['user_id'] = auth()->user()->id;
                 Car::create($car);
-                $request->session()->flash('mensagem',"Veículos encontrados cadastrados");
-                $request->session()->flash('tipo',"alert-success");
+                $count = $count + 1;
             } 
+            $request->session()->flash('mensagem',"$count veículos encontrados e cadastrados");
+            $request->session()->flash('tipo',"alert-success");
             return redirect()->route('home');
         } else {
             $request->session()->flash('mensagem',"Nenhum veículo encontrado");
