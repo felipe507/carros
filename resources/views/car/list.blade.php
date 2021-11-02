@@ -54,7 +54,7 @@
                                             <td>{{$car->ano}}</td>
                                             <td>{{$car->combustivel}}</td>
                                             <td>{{$car->portas}}</td>
-                                            <td>{{$car->quilometragem}} .km</td>
+                                            <td>{{$car->quilometragem}}.km</td>
                                             <td>{{$car->cambio}}</td>
                                             <td>{{$car->cor}}</td>
                                             <td>
