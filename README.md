@@ -1,5 +1,13 @@
 
-# Projeto Teste Estoque
+# Projeto Teste Quest Multimarcas
+
+# Informções
+Linguagem - PHP
+Framework - Laravel 8.68.1
+
+# Descrição
+O sistema possui uma autenticação utilizando o padrão do Laravel, e um sistema de gerenciar usuários e veiculos.
+O projeto realiza uma requisição com PHP ao site MultiMarcas (https://www.questmultimarcas.com.br/estoque) salvando  as informações dos veículos no banco de dados de acordo termo pesquisado utilizando REGEX para separar os campos, na captura de dados.
 
 ## Comandos para rodar o projeto
 Instalar Dependências
@@ -15,14 +23,14 @@ Inserir o primeiro usuário (email:admin@admin.com, senha: admin)
 Rodar servidor 
 - php artisan serve
 
-## Dependências projeto
+## Dependências projeto utilizadas no Web Scrapping
     ```
         Browser-kit - "symfony/browser-kit": "^5.3",
         Crawler - "symfony/dom-crawler": "^5.3",
         Http-client - "symfony/http-client": "^5.3"
     ```
 
-## Lib de Front-end utilizadas
+## Lib utilizadas (link CDN)
     - Boostrap(https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p)
     - Font awesome(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T)
 
