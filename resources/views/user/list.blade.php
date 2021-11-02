@@ -36,8 +36,8 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>
-                                    <a class="btn btn-danger btn-sm" href="../../user/delete/{{$user->id}}">Excluir</a>
-                                    <a class="btn btn-secondary btn-sm" href="../../user/edit/{{$user->id}}">Editar</a>
+                                    <a class="btn btn-danger btn-sm" href="../../user/delete/{{$user->id}}"><i class="fas fa-trash-alt"></i></a>
+                                    <a class="btn btn-secondary btn-sm" href="../../user/edit/{{$user->id}}"><i class="fas fa-edit"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -12,22 +12,15 @@
         <div class="row">
             <div class='container-fluid'>
                 <div class="row align-items-start">
-                    <div class="col">
+                    <div class="col-md-6 box">
                         <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../car/create">Adicionar Modelo Manualmente</a>
                         <a class="btn btn-primary btn-sm" style="margin-bottom: 10px;" href="../../car/capture">Capturar Modelos</a>
                         <a class="btn btn-danger btn-sm" style="margin-bottom: 10px;" href="../../car/deleteall">Deletar Carros</a>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class='container-fluid'>
-                <div class="row align-items-start text-center" style="margin-bottom: 10px;">
-                    <div class="col-md-12 box"> 
+                    <div class="col-md-6 box">
                         <form action="../../car/search" method="post">
                             @csrf
-                            Buscar Veículo Cadastrado <input type="text"  name="search"><button type='submit' class='btn-primary'> <i class="fas fa-search"></i>  </button>
+                            Buscar Veículo Cadastrado: <input type="text"  name="search"><button type='submit' class='btn-primary'> <i class="fas fa-search"></i>  </button>
                         </form>
                     </div>
                 </div>
@@ -61,11 +54,11 @@
                                             <td>{{$car->ano}}</td>
                                             <td>{{$car->combustivel}}</td>
                                             <td>{{$car->portas}}</td>
-                                            <td>{{$car->quilometragem}} . km</td>
+                                            <td>{{$car->quilometragem}} .km</td>
                                             <td>{{$car->cambio}}</td>
                                             <td>{{$car->cor}}</td>
                                             <td>
-                                                <a class="btn btn-danger btn-sm" href="../../car/delete/{{$car->id}}">Excluir</a>
+                                                <a class="btn btn-danger btn-sm" href="../../car/delete/{{$car->id}}"> <i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
