@@ -1,7 +1,10 @@
 
 @extends('layout')
+@section('titulo')
+    Capturar Dados
+@endsection
 @section('cabecalho')
-    Criar usuario 
+    Capturar Dados
 @endsection
 @section('conteudo')
     <div class="text-center"> 

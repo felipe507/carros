@@ -9,7 +9,7 @@
         <h1>Login</h1>
     </div>
     <div class="container">
-      <div class="col mx-auto">
+      <div class="col-4 mx-auto">
         <form action="authenticate" method="POST" style='margin: 10px'>
           @csrf
           <div class="form-group">

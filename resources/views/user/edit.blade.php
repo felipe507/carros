@@ -29,7 +29,7 @@
               <label>Senha:</label>
               <input type="password" name='password' class="form-control" id="exampleInputPassword1" placeholder="Senha"   value='<?php echo $user->password?>' required>
             </div>
-            <button type="submit" class="btn btn-primary">Adicionar</button>
+            <button type="submit" class="btn btn-primary">Atualizar</button>
           </form>
         </div>
       </div
