@@ -15,7 +15,7 @@
             <div class="container-fluid">
                 <div class="jumbotron text-center">
                     <h1>@yield('cabecalho')</h1>  |
-                    <a href='../../user/list'>Gerenciamento de usuário</a> |
+                    <a href='../../user/list'>Gerenciamento usuário</a> |
                     <a href='../../'>Gerenciamento de veículos</a> |
                     <a href="../../logout">Sair</a> 
                 </div>
