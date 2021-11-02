@@ -15,7 +15,7 @@ Inserir o primeiro usuário (email:admin@admin.com, senha: admin)
 Rodar servidor 
 - php artisan serve
 
-## Dependencias projeto
+## Dependências projeto
     ```
         Browser-kit - "symfony/browser-kit": "^5.3",
         Crawler - "symfony/dom-crawler": "^5.3",
